@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class Wallet : MonoBehaviour
 {
-    [SerializeField] private PlayerTakeItem _item;
+    [SerializeField] private Collector _item;
 
     private int _coinsNumber;
 
     private void OnEnable()
     {
-        _item.CoinsNumber += TakeCoin;
+        _item.CollectedCoin += TakeCoin;
     }
 
     private void OnDisable()
     {
-        _item.CoinsNumber -= TakeCoin;
+        _item.CollectedCoin -= TakeCoin;
     }
 
     private void TakeCoin()

@@ -5,7 +5,7 @@ public class CoinsSpawner : MonoBehaviour
 {
     [SerializeField] private Coin _coin;
     [SerializeField] private List<Transform> _points;
-    [SerializeField] private PlayerTakeItem _takeItem;
+    [SerializeField] private Collector _takeItem;
 
     private void Start()
     {
@@ -14,12 +14,12 @@ public class CoinsSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        _takeItem.TakeCoin += DectroyCoin;
+        _takeItem.TookCoin += DectroyCoin;
     }
 
     private void OnDisable()
     {
-        _takeItem.TakeCoin -= DectroyCoin;
+        _takeItem.TookCoin -= DectroyCoin;
     }
 
     private void Spawn()
