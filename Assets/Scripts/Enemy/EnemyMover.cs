@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _enemySprite;
     [SerializeField] private float _speed;
     [SerializeField] private Transform[] _waypoints;
 
     private int _currentWaypoint = 0;
+    private bool _faceRight;
 
     private void Update()
     {
@@ -17,6 +17,15 @@ public class Enemy : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, _waypoints[_currentWaypoint].position, _speed * Time.deltaTime);
 
-        _enemySprite.flipX = _waypoints[_currentWaypoint].position.x < transform.position.x;
+        Reflect(_waypoints[_currentWaypoint].position.x, transform.position.x);
+    }
+
+    private void Reflect(float direction, float position)
+    {
+        if ((direction > position && _faceRight) || (direction < position && !_faceRight))
+        {
+            transform.localScale *= new Vector2(-1, 1);
+            _faceRight = !_faceRight;
+        }
     }
 }
