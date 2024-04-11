@@ -54,9 +54,13 @@ public class PlayerMover : MonoBehaviour
 
     private void Reflect(float direction)
     {
+        float flipX = 0f;
+        float flipY = 180f;
+        float flipZ = 0f;
+
         if ((direction > 0 && _faceRight) || (direction < 0 && !_faceRight))
         {
-            transform.localScale *= new Vector2(-1, 1);
+            transform.Rotate(flipX, flipY, flipZ);
             _faceRight = !_faceRight;
         }
     }
