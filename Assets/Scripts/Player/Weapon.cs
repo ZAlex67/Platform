@@ -4,14 +4,19 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Bullet _bullet;
+    [SerializeField] private InputPlayer _input;
 
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.GetButtonDown("Fire1"))
-            Shoot();
+        _input.Shoot += ShootAction;
     }
 
-    private void Shoot()
+    private void OnDisable()
+    {
+        _input.Shoot -= ShootAction;
+    }
+
+    private void ShootAction()
     {
         Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
     }

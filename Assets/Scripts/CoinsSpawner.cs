@@ -24,11 +24,9 @@ public class CoinsSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        List<Transform> points = _points;
-
-        for (int i = 0; i < points.Count; i++)
+        for (int i = 0; i < _points.Count; i++)
         {
-            Instantiate(_coin, points[i].position, points[i].rotation);
+            Instantiate(_coin, _points[i].position, _points[i].rotation);
         }
     }
 
