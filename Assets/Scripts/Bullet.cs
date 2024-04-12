@@ -11,18 +11,13 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         _rigidbody.velocity = transform.right * _speed;
-    }
-
-    private void Update()
-    {
         Destroy(gameObject, _timeDestroy);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
+        if (collision.TryGetComponent<Health>(out Health health))
         {
-            Health health = collision.gameObject.GetComponent<Health>();
             health.TakeHit(_damage);
             Destroy(gameObject);
         }

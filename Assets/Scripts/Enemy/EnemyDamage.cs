@@ -3,13 +3,11 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] private int _damage = 10;
-    [SerializeField] private Player _player;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_player != null)
+        if (collision.TryGetComponent<Health>(out Health health))
         {
-            Health health = collision.gameObject.GetComponent<Health>();
             health.TakeHit(_damage);
         }
     }

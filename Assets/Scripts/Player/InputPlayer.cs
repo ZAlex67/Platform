@@ -8,8 +8,8 @@ public class InputPlayer : MonoBehaviour
     private string _buttonShoot = "Fire1";
     private float _move;
 
-    public event Action Jump;
-    public event Action Shoot;
+    public event Action Jumping;
+    public event Action Shooting;
 
     public float Move => _move;
 
@@ -18,9 +18,9 @@ public class InputPlayer : MonoBehaviour
         _move = Input.GetAxis(_axisHoriz);
 
         if (Input.GetButtonDown(_buttonJump))
-            Jump?.Invoke();
+            Jumping?.Invoke();
 
         if (Input.GetButtonDown(_buttonShoot))
-            Shoot?.Invoke();
+            Shooting?.Invoke();
     }
 }

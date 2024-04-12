@@ -8,12 +8,12 @@ public class Weapon : MonoBehaviour
 
     private void OnEnable()
     {
-        _input.Shoot += ShootAction;
+        _input.Shooting += ShootAction;
     }
 
     private void OnDisable()
     {
-        _input.Shoot -= ShootAction;
+        _input.Shooting -= ShootAction;
     }
 
     private void ShootAction()

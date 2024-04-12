@@ -33,12 +33,12 @@ public class PlayerMover : MonoBehaviour
 
     private void OnEnable()
     {
-        _input.Jump += JumpAction;
+        _input.Jumping += JumpAction;
     }
 
     private void OnDisable()
     {
-        _input.Jump -= JumpAction;
+        _input.Jumping -= JumpAction;
     }
 
     private void MoveAction()

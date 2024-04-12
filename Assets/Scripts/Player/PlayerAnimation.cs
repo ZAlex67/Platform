@@ -3,10 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimation : MonoBehaviour
 {
-    private Animator _animator;
-
     public static readonly int MoveX = Animator.StringToHash(nameof(MoveX));
     public static readonly int OnGrounded = Animator.StringToHash(nameof(OnGrounded));
+
+    private Animator _animator;
 
     private void Start()
     {
