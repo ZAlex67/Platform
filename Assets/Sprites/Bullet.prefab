@@ -162,4 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 20
-  _rb: {fileID: 5949155946942619125}
+  _rigidbody: {fileID: 5949155946942619125}
+  _damage: 10
+  _timeDestroy: 4

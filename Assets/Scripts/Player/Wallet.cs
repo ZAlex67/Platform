@@ -8,15 +8,15 @@ public class Wallet : MonoBehaviour
 
     private void OnEnable()
     {
-        _item.CollectedCoin += TakeCoin;
+        _item.TookCoin += TakeCoin;
     }
 
     private void OnDisable()
     {
-        _item.CollectedCoin -= TakeCoin;
+        _item.TookCoin -= TakeCoin;
     }
 
-    private void TakeCoin()
+    private void TakeCoin(Coin coin)
     {
         _coinsNumber++;
         Debug.Log(_coinsNumber);
