@@ -33,9 +33,13 @@ public class EnemyMover : MonoBehaviour
 
     private void Reflect(float direction, float position)
     {
+        float flipX = 0f;
+        float flipY = 180f;
+        float flipZ = 0f;
+
         if ((direction > position && _faceRight) || (direction < position && !_faceRight))
         {
-            transform.localScale *= new Vector2(-1, 1);
+            transform.Rotate(flipX, flipY, flipZ);
             _faceRight = !_faceRight;
         }
     }
