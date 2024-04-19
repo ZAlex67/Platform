@@ -17,15 +17,15 @@ public class VampirismSpell : MonoBehaviour
 
     private void OnEnable()
     {
-        _input.Vampirisming += HealthTransfer;
+        _input.Vampirisming += OnHealthTransferred;
     }
 
     private void OnDisable()
     {
-        _input.Vampirisming -= HealthTransfer;
+        _input.Vampirisming -= OnHealthTransferred;
     }
 
-    private void HealthTransfer()
+    private void OnHealthTransferred()
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
