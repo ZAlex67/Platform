@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class HealthBarSliderSmooth : HealthBarSlider
 {
-    private float _coefficient = 3f;
     private Coroutine _coroutine;
 
     protected override void OnHealthUpdated()
@@ -18,10 +17,17 @@ public class HealthBarSliderSmooth : HealthBarSlider
 
     private IEnumerator ChangeHealthSmooth()
     {
-        while (Slider.value != HealthPoint.CurrentHealth)
+        float durationTime = 0.5f;
+        float runningTime = 0;
+        float startValue = Slider.value;
+
+        while (durationTime - runningTime > float.Epsilon)
         {
-            Slider.value = Mathf.Lerp(Slider.value, HealthPoint.CurrentHealth, _coefficient * Time.deltaTime);
+            Slider.value = Mathf.Lerp(startValue, HealthPoint.CurrentHealth, runningTime / durationTime);
+            runningTime += Time.deltaTime;
             yield return null;
         }
+
+        Slider.value = HealthPoint.CurrentHealth;
     }
 }

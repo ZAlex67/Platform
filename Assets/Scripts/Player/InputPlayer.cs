@@ -6,10 +6,12 @@ public class InputPlayer : MonoBehaviour
     private string _axisHoriz = "Horizontal";
     private string _buttonJump = "Jump";
     private string _buttonShoot = "Fire1";
+    private string _buttonVampirism = "Fire2";
     private float _move;
 
     public event Action Jumping;
     public event Action Shooting;
+    public event Action Vampirisming;
 
     public float Move => _move;
 
@@ -22,5 +24,8 @@ public class InputPlayer : MonoBehaviour
 
         if (Input.GetButtonDown(_buttonShoot))
             Shooting?.Invoke();
+
+        if (Input.GetButtonDown (_buttonVampirism))
+            Vampirisming?.Invoke();
     }
 }

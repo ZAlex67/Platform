@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField, Range(0, 100)] private int _health;
-    [SerializeField, Range(0, 100)] private int _maxHealth;
+    [SerializeField, Range(0, 100)] private float _health;
+    [SerializeField, Range(0, 100)] private float _maxHealth;
     [SerializeField] private Death _death;
 
     public event Action CheckedHealth;
 
-    public int CurrentHealth => _health;
-    public int MaxHealth => _maxHealth;
+    public float CurrentHealth => _health;
+    public float MaxHealth => _maxHealth;
 
-    public void TakeHit(int damage)
+    public void TakeHit(float damage)
     {
         if (damage >= 0)
             _health = Mathf.Clamp(_health -= damage, 0, _maxHealth);
@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
         CheckedHealth?.Invoke();
     }
 
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
         if (health >= 0)
             _health = Mathf.Clamp(_health += health, 0, _maxHealth);
