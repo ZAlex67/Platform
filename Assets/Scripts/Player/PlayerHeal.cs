@@ -10,7 +10,7 @@ public class PlayerHeal : MonoBehaviour
         if (_player)
         {
             Health health = collision.gameObject.GetComponent<Health>();
-            health.SetHealth(_heal);
+            health.RestoreHealth(_heal);
             Destroy(gameObject);
         }
     }

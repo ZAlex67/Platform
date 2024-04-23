@@ -5676,6 +5676,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthRatio: 10
   _input: {fileID: 1667614026}
+  _point: {fileID: 1667614034}
+--- !u!4 &1667614034 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5343231491351634697, guid: 9d3342f340a44d449a66f7b108ded247, type: 3}
+  m_PrefabInstance: {fileID: 8069744874467149163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1692297025
 GameObject:
   m_ObjectHideFlags: 0
@@ -6186,6 +6192,10 @@ PrefabInstance:
     - target: {fileID: 7387212290698973939, guid: 9d3342f340a44d449a66f7b108ded247, type: 3}
       propertyPath: m_Color.r
       value: 0.0030500889
+      objectReference: {fileID: 0}
+    - target: {fileID: 7554608694271045712, guid: 9d3342f340a44d449a66f7b108ded247, type: 3}
+      propertyPath: m_SortingOrder
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

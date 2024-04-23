@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
         CheckedHealth?.Invoke();
     }
 
-    public void SetHealth(float health)
+    public void RestoreHealth(float health)
     {
         if (health >= 0)
             _health = Mathf.Clamp(_health += health, 0, _maxHealth);
