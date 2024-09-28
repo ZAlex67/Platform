@@ -1,30 +1,40 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 20f;
-    [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private int _damage = 10;
-    [SerializeField] private float _timeDestroy = 4f;
 
-    private void Start()
+    private Rigidbody2D _rigidbody;
+    private BulletFactory _factory;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
     {
         _rigidbody.velocity = transform.right * _speed;
-        Destroy(gameObject, _timeDestroy);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Health>(out Health health))
+        if (collision.TryGetComponent<IHealth>(out IHealth health))
         {
             health.TakeHit(_damage);
-            Destroy(gameObject);
+            _factory.ReleaseObject(this);
         }
 
-        if (collision.TryGetComponent<Tilemap>(out Tilemap tilemap))
+        if (collision.TryGetComponent<Ground>(out Ground ground))
         {
-            Destroy(gameObject);
+            _factory.ReleaseObject(this);
         }
+    }
+
+    public void SetFactory(BulletFactory factory)
+    {
+        _factory = factory;
     }
 }

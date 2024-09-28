@@ -68,7 +68,9 @@ public class PlayerMover : MonoBehaviour
     private void JumpAction()
     {
         if (_isGrounded)
+        {
             _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
+        }
     }
 
     private void CheckGround()

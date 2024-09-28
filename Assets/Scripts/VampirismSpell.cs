@@ -69,8 +69,6 @@ public class VampirismSpell : MonoBehaviour
             _player.RestoreHealth(_healthRatio * Time.deltaTime);
             currentTime -= Time.deltaTime;
 
-            Debug.Log(currentTime);
-
             yield return null;
         }
     }

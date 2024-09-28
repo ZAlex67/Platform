@@ -1,11 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class CoinsSpawner : MonoBehaviour
 {
     [SerializeField] private Coin _coin;
     [SerializeField] private List<Transform> _points;
     [SerializeField] private Collector _takeItem;
+
+    private AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -32,6 +40,7 @@ public class CoinsSpawner : MonoBehaviour
 
     private void DectroyCoin(Coin coin)
     {
+        _audioSource.Play();
         Destroy(coin.gameObject);
     }
 }
